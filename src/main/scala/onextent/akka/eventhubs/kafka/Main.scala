@@ -1,4 +1,4 @@
-package onextent.akka.eventhubs.consumer
+package onextent.akka.eventhubs.kafka
 
 import akka.kafka.{ConsumerSettings, Subscriptions}
 import akka.kafka.scaladsl.Consumer

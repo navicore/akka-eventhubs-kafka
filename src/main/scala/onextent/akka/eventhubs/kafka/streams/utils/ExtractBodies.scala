@@ -1,9 +1,9 @@
-package onextent.akka.eventhubs.consumer.streams.utils
+package onextent.akka.eventhubs.kafka.streams.utils
 
 import akka.NotUsed
 import akka.stream.scaladsl.Flow
 import com.microsoft.azure.reactiveeventhubs.EventHubsMessage
-import onextent.akka.eventhubs.consumer.models.EhEnvelop
+import onextent.akka.eventhubs.kafka.models.EhEnvelop
 import org.json4s.jackson.JsonMethods._
 import org.json4s.{DefaultFormats, _}
 

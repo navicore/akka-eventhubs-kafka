@@ -40,7 +40,7 @@ dependencyOverrides ++= Set(
   "com.typesafe.akka" %% "akka-stream" % akkaVersion
 )
 
-mainClass in assembly := Some("onextent.akka.eventhubs.consumer.Main")
+mainClass in assembly := Some("onextent.akka.eventhubs.kafka.Main")
 assemblyJarName in assembly := "AkkaEventHubsKafka.jar"
 
 assemblyMergeStrategy in assembly := {
