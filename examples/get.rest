@@ -1,0 +1,5 @@
+http://localhost:8080
+-ks
+Content-Type: application/json; charset=utf-8
+
+GET /consumer/aThni

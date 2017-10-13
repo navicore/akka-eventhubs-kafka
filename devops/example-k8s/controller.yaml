@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: akka-eventhubs-kafka-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: akka-eventhubs-kafka
+        version: v1
+    spec:
+      containers:
+        - name: akka-eventhubs-kafka
+          image: navicore/akka-eventhubs-kafka:latest
+          env:
+          - name: BOOTSTRAP
+            value: "CHANGE_ME"
+          - name: CONSUMER_GROUP
+            value: "CHANGE_ME"
+          - name: TOPIC
+            value: "CHANGE_ME"
+          - name: EVENTHUB_NAME
+            value: "CHANGE_ME"
+          - name: EVENTHUB_ENDPOINT
+            value: "CHANGE_ME"
+          - name: EVENTHUB_PARTITIONS
+            value: "CHANGE_ME"
+          - name: EVENTHUB_ACCESS_POLICY
+            value: "CHANGE_ME"
+          - name: EVENTHUB_ACCESS_KEY
+            value: "CHANGE_ME"
+          - name: CHECKPOINT_ACCOUNT
+            value: "CHANGE_ME"
+          - name: CHECKPOINT_KEY
+            value: "CHANGE_ME"
+          ports:
+          - containerPort: 8080
+
