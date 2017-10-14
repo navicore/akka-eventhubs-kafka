@@ -13,6 +13,7 @@ spec:
       containers:
         - name: akka-eventhubs-kafka
           image: navicore/akka-eventhubs-kafka:latest
+          imagePullPolicy: Always
           env:
           - name: BOOTSTRAP
             value: "CHANGE_ME"
