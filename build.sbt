@@ -30,6 +30,7 @@ libraryDependencies ++=
 
     "com.microsoft.azure" %% "azure-eventhubs-reactive" % "0.5.0",
 
+    "com.microsoft.azure" % "azure-eventhubs" % "0.15.1",
     "com.typesafe.akka" %% "akka-stream-kafka" % "0.17",
 
     "org.scalatest" %% "scalatest" % "3.0.1" % "test"
