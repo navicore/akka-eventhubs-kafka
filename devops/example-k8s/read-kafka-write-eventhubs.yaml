@@ -1,22 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ReadKafkaWriteEventHubs-v1
+  name: read-kafka-write-eventhubs-v1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: ReadKafkaWriteEventHubs
+        app: read-kafka-write-eventhubs
         version: v1
     spec:
       containers:
-        - name: ReadKafkaWriteEventHubs
+        - name: read-kafka-write-eventhubs
           image: navicore/akka-eventhubs-kafka:latest
           imagePullPolicy: Always
           env:
           - name: EH_MODE
-            value: "CONSUME"
+            value: "PRODUCE"
           - name: BOOTSTRAP
             value: "CHANGE_ME"
           - name: CONSUMER_GROUP

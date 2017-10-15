@@ -9,7 +9,10 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.LazyLogging
 import onextent.akka.eventhubs.kafka.streams.eventhubs.EhPublish
 import org.apache.kafka.clients.consumer.ConsumerConfig
-import org.apache.kafka.common.serialization.{ByteArrayDeserializer, StringDeserializer}
+import org.apache.kafka.common.serialization.{
+  ByteArrayDeserializer,
+  StringDeserializer
+}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -34,16 +37,10 @@ object ReadKafkaWriteEventhubs extends LazyLogging {
       .committableSource(consumerSettings, Subscriptions.topics(topic))
       .mapAsync(10) {
         val ehPublish = EhPublish()
-        def publish(key: String, value: String): Future[Done] = {
-          ehPublish(key, value)
-          Future.successful(Done) //todo: make async in ehClient call
-        }
-
         (msg: ConsumerMessage.CommittableMessage[Array[Byte], String]) =>
-          val key = Option(msg.record.key())
-            .getOrElse(msg.hashCode().toString.toArray)
-            .toString //todo fix bs
-          publish(key, msg.record.value()).map(_ => msg)
+          val key = new String(
+            Option(msg.record.key()).getOrElse(msg.hashCode().toString.getBytes("UTF8")))
+          ehPublish(key, msg.record.value()).map(_ => msg)
       }
       .mapAsync(10) {
         (msg: ConsumerMessage.CommittableMessage[Array[Byte], String]) =>
