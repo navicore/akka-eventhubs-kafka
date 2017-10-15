@@ -1,16 +1,13 @@
 package onextent.akka.eventhubs.kafka.streams.eventhubs
 
 import com.microsoft.azure.eventhubs.{EventData, EventHubClient}
-import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.LazyLogging
+import onextent.akka.eventhubs.kafka.Conf
 
 import scala.compat.java8.FutureConverters._
 import scala.concurrent.Future
 
-object EhPublish extends LazyLogging {
-
-  val conf: Config = ConfigFactory.load()
-  val connStr: String = conf.getString("eventhubs.connStr")
+object EhPublish extends LazyLogging with Conf {
 
   def apply(): (String, String) => Future[Void] = {
 
