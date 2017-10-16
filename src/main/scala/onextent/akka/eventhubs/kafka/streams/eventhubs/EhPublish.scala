@@ -19,7 +19,7 @@ object EhPublish extends LazyLogging with Conf {
   def apply(): CommittableMessage[Array[Byte], String] => Future[
     CommittableMessage[Array[Byte], String]] = {
 
-    // reuse thie conn for all the invokes of the func returned below
+    // reuse this connection for all the invokes of the function returned below
     val ehClient: EventHubClient =
       EventHubClient.createFromConnectionStringSync(connStr)
 
