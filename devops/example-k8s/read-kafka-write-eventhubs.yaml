@@ -23,19 +23,7 @@ spec:
             value: "CHANGE_ME"
           - name: TOPIC
             value: "CHANGE_ME"
-          - name: EVENTHUB_NAME
-            value: "CHANGE_ME"
-          - name: EVENTHUB_ENDPOINT
-            value: "CHANGE_ME"
-          - name: EVENTHUB_PARTITIONS
-            value: "CHANGE_ME"
-          - name: EVENTHUB_ACCESS_POLICY
-            value: "CHANGE_ME"
-          - name: EVENTHUB_ACCESS_KEY
-            value: "CHANGE_ME"
-          - name: CHECKPOINT_ACCOUNT
-            value: "CHANGE_ME"
-          - name: CHECKPOINT_KEY
+          - name: EVENTHUBS_CONNSTR
             value: "CHANGE_ME"
           ports:
           - containerPort: 8080
