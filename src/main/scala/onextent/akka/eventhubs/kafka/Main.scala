@@ -4,11 +4,11 @@ import com.typesafe.scalalogging.LazyLogging
 
 object Main extends App with LazyLogging with Conf {
 
-  if (op == "READ_KAFKA") {
-    logger.info("INIT KAFKA to eh")
+  if (ehMode == "PRODUCE") {
+    logger.info("INIT kafka TO eventhubs")
     ReadKafkaWriteEventHubs()
   } else {
-    logger.info("INIT EVENTHUB to kafka")
+    logger.info("INIT kafka FROM eventhubs")
     ReadEventhubsWriteKafka()
   }
 }

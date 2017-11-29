@@ -11,9 +11,9 @@ parallelExecution in test := false
 
 version := "1.0"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.4"
+ensimeScalaVersion in ThisBuild := "2.12.4"
 val akkaVersion = "2.5.4"
-val akkaHttpVersion = "10.0.9"
 
 libraryDependencies ++=
   Seq(
@@ -36,7 +36,7 @@ libraryDependencies ++=
     "org.scalatest" %% "scalatest" % "3.0.1" % "test"
   )
 
-dependencyOverrides ++= Set(
+dependencyOverrides ++= Seq(
   "com.typesafe.akka" %% "akka-actor"  % akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion
 )

@@ -10,7 +10,7 @@ trait Conf {
 
   val conf: Config = ConfigFactory.load()
 
-  val op: String = conf.getString("main.op")
+  val ehMode: String = conf.getString("eventhubs.ehMode")
 
   val bootstrap: String = conf.getString("kafka.bootstrap")
   val consumerGroup: String = conf.getString("kafka.consumerGroup")
