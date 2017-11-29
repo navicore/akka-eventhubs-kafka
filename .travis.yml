@@ -16,3 +16,17 @@ script:
   # Tricks to avoid unnecessary cache updates
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+
+sudo: required
+
+services:
+  - docker
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push navicore/akka-eventhubs-kafka;
+    docker tag "navicore/akka-eventhubs-kafka" "navicore/akka-eventhubs-kafka:0.1.$TRAVIS_BUILD_NUMBER";
+    docker push "navicore/akka-eventhubs-kafka:0.1.$TRAVIS_BUILD_NUMBER";
+    fi
+

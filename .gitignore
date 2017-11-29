@@ -1,4 +1,4 @@
-ENV.sh
+ENV*.sh
 devops/k8s
 .ensime
 .ensime_cache/
