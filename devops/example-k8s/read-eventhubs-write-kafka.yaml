@@ -16,14 +16,30 @@ spec:
           imagePullPolicy: Always
           env:
           - name: EH_MODE
-            value: "PRODUCE"
-          - name: BOOTSTRAP
-            value: "CHANGE_ME"
-          - name: CONSUMER_GROUP
-            value: "CHANGE_ME"
+            value: "CONSUME"
           - name: TOPIC
             value: "CHANGE_ME"
-          - name: EVENTHUBS_CONNSTR
+          - name: BOOTSTRAP
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_NAME
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_NAMESPACE
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_ENDPOINT
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_CONSUMER_GROUP
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_PARTITION_COUNT
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_ACCESS_POLICY
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_ACCESS_KEY
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_CHECKPOINT_ACCOUNT
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_CHECKPOINT_KEY
+            value: "CHANGE_ME"
+          - name: EVENTHUBS_1_CHECKPOINT_PATH
             value: "CHANGE_ME"
           ports:
           - containerPort: 8080
