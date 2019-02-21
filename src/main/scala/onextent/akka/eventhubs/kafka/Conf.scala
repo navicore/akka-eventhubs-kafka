@@ -35,10 +35,10 @@ trait Conf {
     consumerSettingsPlain
     .withProperty("ssl.truststore.location", trustStorePath)
     .withProperty("ssl.truststore.password", trustStorePassword)
-      .withProperty("ssl.keystore.location", keyStorePath)
-        .withProperty("ssl.keystore.password", keyStorePassword)
-      .withProperty("ssl.key.password", keyPassword)
-        .withProperty("security.protocol", securityProtocol)
+    .withProperty("ssl.keystore.location", keyStorePath)
+    .withProperty("ssl.keystore.password", keyStorePassword)
+    .withProperty("ssl.key.password", keyPassword)
+    .withProperty("security.protocol", securityProtocol)
     .withProperty("sasl.mechanism", saslMechanism)
 
   val consumerSettings:ConsumerSettings[Array[Byte], String]  = {
@@ -48,8 +48,22 @@ trait Conf {
 
   val connStr: String = conf.getString("eventhubs.connStr")
 
-  val producerSettings: ProducerSettings[Array[Byte], String] =
+  val producerSettingsPlain: ProducerSettings[Array[Byte], String] =
     ProducerSettings(actorSystem, new ByteArraySerializer, new StringSerializer)
       .withBootstrapServers(bootstrap)
 
+  lazy  val producerSettingsWithTLS: ProducerSettings[Array[Byte], String] =
+    producerSettingsPlain
+      .withProperty("ssl.truststore.location", trustStorePath)
+      .withProperty("ssl.truststore.password", trustStorePassword)
+      .withProperty("ssl.keystore.location", keyStorePath)
+      .withProperty("ssl.keystore.password", keyStorePassword)
+      .withProperty("ssl.key.password", keyPassword)
+      .withProperty("security.protocol", securityProtocol)
+      .withProperty("sasl.mechanism", saslMechanism)
+
+  val producerSettings: ProducerSettings[Array[Byte], String] = {
+     if (conf.getBoolean("kafka.useTLS")) producerSettingsWithTLS
+     else producerSettingsPlain
+  }
 }
