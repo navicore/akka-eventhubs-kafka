@@ -23,13 +23,13 @@ trait Conf {
     .withGroupId(consumerGroup)
     .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest")
 
-  val trustStorePath = conf.getString("trustStorePath")
-  val keyStorePath = conf.getString("keyStorePath")
-  val trustStorePassword =  conf.getString("trustStorePassword")
-  val keyStorePassword =  conf.getString("keyStorePassword")
-  val keyPassword = conf.getString("keyPassword")
-  val securityProtocol = conf.getString("securityProtocol")
-  val saslMechanism = conf.getString("saslMechanism")
+  val trustStorePath = conf.getString("kafka.trustStorePath")
+  val keyStorePath = conf.getString("kafka.keyStorePath")
+  val trustStorePassword =  conf.getString("kafka.trustStorePassword")
+  val keyStorePassword =  conf.getString("kafka.keyStorePassword")
+  val keyPassword = conf.getString("kafka.keyPassword")
+  val securityProtocol = conf.getString("kafka.securityProtocol")
+  val saslMechanism = conf.getString("kafka.saslMechanism")
 
   lazy val consumerSettingsWithTLS: ConsumerSettings[Array[Byte], String] =
     consumerSettingsPlain
